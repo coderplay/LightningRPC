@@ -11,7 +11,7 @@ import code.google.nfs.rpc.protocol.ByteBufferWrapper;
 /**
  * Implements ByteBufferWrapper based on Netty ChannelBuffer
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
+ * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class Netty4ByteBufferWrapper implements ByteBufferWrapper {
 

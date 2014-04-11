@@ -6,6 +6,7 @@ package code.google.nfs.rpc.netty4.client;
  *   http://code.google.com/p/nfs-rpc (c) 2011
  */
 import code.google.nfs.rpc.netty4.serialize.Netty4ProtocolDecoder;
+import code.google.nfs.rpc.netty4.serialize.Netty4ProtocolEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;
@@ -26,11 +27,11 @@ import org.apache.commons.logging.LogFactory;
 import code.google.nfs.rpc.NamedThreadFactory;
 import code.google.nfs.rpc.client.AbstractClientFactory;
 import code.google.nfs.rpc.client.Client;
-import code.google.nfs.rpc.netty4.serialize.NettyProtocolEncoder;
+
 /**
  * Netty Client Factory,to create client based on netty4 API
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
+ * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class Netty4ClientFactory extends AbstractClientFactory {
 
@@ -72,7 +73,7 @@ public class Netty4ClientFactory extends AbstractClientFactory {
 			protected void initChannel(SocketChannel channel) throws Exception {
 				ChannelPipeline pipeline = channel.pipeline();
 				pipeline.addLast("decoder", new Netty4ProtocolDecoder());
-				pipeline.addLast("encoder", new NettyProtocolEncoder());
+				pipeline.addLast("encoder", new Netty4ProtocolEncoder());
 				pipeline.addLast("handler", handler);
 			}
 			

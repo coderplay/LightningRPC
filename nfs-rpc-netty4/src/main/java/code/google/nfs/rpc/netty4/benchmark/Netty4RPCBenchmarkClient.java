@@ -17,7 +17,7 @@ import code.google.nfs.rpc.netty4.client.Netty4ClientInvocationHandler;
 /**
  * Netty RPC Benchmark Client
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
+ * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class Netty4RPCBenchmarkClient extends AbstractRPCBenchmarkClient {
 

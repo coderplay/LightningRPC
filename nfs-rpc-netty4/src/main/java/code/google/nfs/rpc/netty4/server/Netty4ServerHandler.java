@@ -25,7 +25,7 @@ import code.google.nfs.rpc.ResponseWrapper;
 /**
  * Netty4 Server Handler
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
+ * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
 

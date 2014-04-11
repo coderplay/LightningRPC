@@ -5,34 +5,33 @@ package code.google.nfs.rpc.netty4.server;
  *   
  *   http://code.google.com/p/nfs-rpc (c) 2011
  */
+
+import code.google.nfs.rpc.NamedThreadFactory;
+import code.google.nfs.rpc.ProtocolFactory;
 import code.google.nfs.rpc.netty4.serialize.Netty4ProtocolDecoder;
+import code.google.nfs.rpc.netty4.serialize.Netty4ProtocolEncoder;
+import code.google.nfs.rpc.server.Server;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import code.google.nfs.rpc.NamedThreadFactory;
-import code.google.nfs.rpc.ProtocolFactory;
-import code.google.nfs.rpc.netty4.serialize.NettyProtocolEncoder;
-import code.google.nfs.rpc.server.Server;
-
 /**
  * Netty Server
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
+ * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class Netty4Server implements Server {
 
@@ -47,9 +46,9 @@ public class Netty4Server implements Server {
 	public Netty4Server() {
 		ThreadFactory serverBossTF = new NamedThreadFactory("NETTYSERVER-BOSS-");
 		ThreadFactory serverWorkerTF = new NamedThreadFactory("NETTYSERVER-WORKER-");
-		EventLoopGroup bossGroup = new EpollEventLoopGroup(PROCESSORS, serverBossTF);
-		EpollEventLoopGroup workerGroup = new EpollEventLoopGroup(PROCESSORS * 2,serverWorkerTF);
-		workerGroup.setIoRatio(Integer.parseInt(System.getProperty("nfs.rpc.io.ratio", "10")));
+		EventLoopGroup bossGroup = new NioEventLoopGroup(PROCESSORS, serverBossTF);
+		NioEventLoopGroup workerGroup = new NioEventLoopGroup(PROCESSORS * 2,serverWorkerTF);
+		workerGroup.setIoRatio(Integer.parseInt(System.getProperty("nfs.rpc.io.ratio", "50")));
 		bootstrap = new ServerBootstrap();
 		bootstrap.group(bossGroup,workerGroup)
 			     .channel(NioServerSocketChannel.class)
@@ -67,7 +66,7 @@ public class Netty4Server implements Server {
 			protected void initChannel(SocketChannel channel) throws Exception {
 				ChannelPipeline pipeline = channel.pipeline();
 				pipeline.addLast("decoder", new Netty4ProtocolDecoder());
-				pipeline.addLast("encoder", new NettyProtocolEncoder());
+				pipeline.addLast("encoder", new Netty4ProtocolEncoder());
 				pipeline.addLast("handler", new Netty4ServerHandler(threadPool));
 			}
 			

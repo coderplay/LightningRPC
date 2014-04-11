@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <assembly>
   <id>nfs-rpc</id>
   <formats>
     <format>zip</format>
-	<format>tar.gz</format>
+    <format>tar.gz</format>
   </formats>
   <moduleSets>
     <moduleSet>
@@ -15,10 +15,10 @@
           <dependencySet>
             <useProjectArtifact>true</useProjectArtifact>
             <outputDirectory>lib</outputDirectory>
-            <outputFileNameMapping>${module.artifactId}-${module.version}.${module.extension}</outputFileNameMapping>
-			<excludes>
+            <!-- <outputFileNameMapping>${module.artifactId}-${module.version}.${module.extension}</outputFileNameMapping> -->
+	    <excludes>
               <exclude>code.google.nfs.rpc:nfs-rpc-common</exclude>
-			  <exclude>org.slf4j:slf4j-api:jar:1.6.1</exclude>
+	      <exclude>org.slf4j:slf4j-api:jar:1.6.1</exclude>
             </excludes>
           </dependencySet>
         </dependencySets>
@@ -27,12 +27,12 @@
   </moduleSets>
   <fileSets>
     <fileSet>
-	  <directory>nfs-script</directory>
+      <directory>nfs-script</directory>
       <includes>
-		<include>client/*.sh</include>
-		<include>server/*.sh</include>
-	  </includes>
-	  <outputDirectory>bin</outputDirectory>
+	<include>client/*.sh</include>
+	<include>server/*.sh</include>
+      </includes>
+      <outputDirectory>bin</outputDirectory>
     </fileSet>
   </fileSets>
 </assembly>
