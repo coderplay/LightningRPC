@@ -5,16 +5,15 @@ package code.google.nfs.rpc.netty4.client;
  *   
  *   http://code.google.com/p/nfs-rpc (c) 2011
  */
+
+import code.google.nfs.rpc.ResponseWrapper;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-
-import java.io.IOException;
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import code.google.nfs.rpc.ResponseWrapper;
+import java.io.IOException;
+import java.util.List;
 /**
  * Netty Client Handler
  * 

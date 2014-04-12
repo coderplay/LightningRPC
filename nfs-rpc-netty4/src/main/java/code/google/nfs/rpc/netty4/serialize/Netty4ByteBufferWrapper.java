@@ -5,9 +5,10 @@ package code.google.nfs.rpc.netty4.serialize;
  *   
  *   http://code.google.com/p/nfs-rpc (c) 2011
  */
+
+import code.google.nfs.rpc.protocol.ByteBufferWrapper;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import code.google.nfs.rpc.protocol.ByteBufferWrapper;
 /**
  * Implements ByteBufferWrapper based on Netty ChannelBuffer
  * 

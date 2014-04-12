@@ -6,19 +6,18 @@ package code.google.nfs.rpc.netty4.client;
  *   
  *   http://code.google.com/p/nfs-rpc (c) 2011
  */
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-
-import java.net.InetSocketAddress;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import code.google.nfs.rpc.RequestWrapper;
 import code.google.nfs.rpc.ResponseWrapper;
 import code.google.nfs.rpc.client.AbstractClient;
 import code.google.nfs.rpc.client.Client;
 import code.google.nfs.rpc.client.ClientFactory;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.net.InetSocketAddress;
 
 /**
  * Netty Client

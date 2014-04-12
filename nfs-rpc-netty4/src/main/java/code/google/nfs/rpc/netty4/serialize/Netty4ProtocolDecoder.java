@@ -5,6 +5,8 @@ package code.google.nfs.rpc.netty4.serialize;
  *   
  *   http://code.google.com/p/nfs-rpc (c) 2011
  */
+
+import code.google.nfs.rpc.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
@@ -16,8 +18,6 @@ import io.netty.util.internal.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import code.google.nfs.rpc.protocol.ProtocolUtils;
 /**
  * decode byte[]
  * 

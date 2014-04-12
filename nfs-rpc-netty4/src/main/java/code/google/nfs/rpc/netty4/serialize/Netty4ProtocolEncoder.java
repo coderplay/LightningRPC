@@ -5,10 +5,11 @@ package code.google.nfs.rpc.netty4.serialize;
  *   
  *   http://code.google.com/p/nfs-rpc (c) 2011
  */
+
+import code.google.nfs.rpc.protocol.ProtocolUtils;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
-import code.google.nfs.rpc.protocol.ProtocolUtils;
 /**
  * Encode Message
  * 

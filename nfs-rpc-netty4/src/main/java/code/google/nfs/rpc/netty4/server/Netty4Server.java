@@ -17,6 +17,8 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -46,12 +48,12 @@ public class Netty4Server implements Server {
 	public Netty4Server() {
 		ThreadFactory serverBossTF = new NamedThreadFactory("NETTYSERVER-BOSS-");
 		ThreadFactory serverWorkerTF = new NamedThreadFactory("NETTYSERVER-WORKER-");
-		EventLoopGroup bossGroup = new NioEventLoopGroup(PROCESSORS, serverBossTF);
-		NioEventLoopGroup workerGroup = new NioEventLoopGroup(PROCESSORS * 2,serverWorkerTF);
-		workerGroup.setIoRatio(Integer.parseInt(System.getProperty("nfs.rpc.io.ratio", "50")));
+		EventLoopGroup bossGroup = new EpollEventLoopGroup(PROCESSORS, serverBossTF);
+		EpollEventLoopGroup workerGroup = new EpollEventLoopGroup(PROCESSORS * 2,serverWorkerTF);
+		workerGroup.setIoRatio(Integer.parseInt(System.getProperty("nfs.rpc.io.ratio", "80")));
 		bootstrap = new ServerBootstrap();
 		bootstrap.group(bossGroup,workerGroup)
-			     .channel(NioServerSocketChannel.class)
+			     .channel(EpollServerSocketChannel.class)
 			     .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
 			     .option(ChannelOption.SO_REUSEADDR, Boolean.parseBoolean(System.getProperty("nfs.rpc.tcp.reuseaddress", "true")))
 			     .option(ChannelOption.TCP_NODELAY, Boolean.parseBoolean(System.getProperty("nfs.rpc.tcp.nodelay", "true")));
