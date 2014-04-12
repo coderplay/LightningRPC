@@ -56,6 +56,7 @@ public class Netty4Server implements Server {
 		bootstrap.group(bossGroup,workerGroup)
 			     .channel(EpollServerSocketChannel.class)
 			     .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
+           .childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
 			     .option(ChannelOption.SO_REUSEADDR, Boolean.parseBoolean(System.getProperty("nfs.rpc.tcp.reuseaddress", "true")))
 			     .option(ChannelOption.TCP_NODELAY, Boolean.parseBoolean(System.getProperty("nfs.rpc.tcp.nodelay", "true")));
 	}
