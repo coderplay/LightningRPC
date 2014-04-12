@@ -58,7 +58,7 @@ public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
 	private void handleRequest(final ChannelHandlerContext ctx, final Object message) {
 		try {
 			threadpool.execute(new HandlerRunnable(ctx, message, threadpool));
-		} 
+		}
 		catch (RejectedExecutionException exception) {
 			LOGGER.error("server threadpool full,threadpool maxsize is:"
 					+ ((ThreadPoolExecutor) threadpool).getMaximumPoolSize());
@@ -87,15 +87,24 @@ public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
 			}
 		});
 	}
-	
-	class HandlerRunnable implements Runnable{
+
+  private static final ChannelFutureListener listener = new ChannelFutureListener() {
+    public void operationComplete(ChannelFuture future) throws Exception {
+      if(!future.isSuccess()){
+        LOGGER.error("server write response error");
+      }
+    }
+  };
+
+  class HandlerRunnable implements Runnable{
 
 		private ChannelHandlerContext ctx;
 		
 		private Object message;
 		
 		private ExecutorService threadPool;
-		
+
+
 		public HandlerRunnable(ChannelHandlerContext ctx,Object message,ExecutorService threadPool){
 			this.ctx = ctx;
 			this.message = message;
@@ -124,17 +133,11 @@ public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
 							+ ctx.channel().remoteAddress()+",consumetime is:"+(System.currentTimeMillis() - beginTime)+",timeout is:"+request.getTimeout());
 					return;
 				}
-				ChannelFuture wf = ctx.channel().writeAndFlush(responseWrapper);
-				wf.addListener(new ChannelFutureListener() {
-					public void operationComplete(ChannelFuture future) throws Exception {
-						if(!future.isSuccess()){
-							LOGGER.error("server write response error,request id is: " + id);
-						}
-					}
-				});
+				ChannelFuture wf = ctx.writeAndFlush(responseWrapper);
+				wf.addListener(listener);
 			}
 		}
-		
+
 	}
 	
 }
