@@ -9,10 +9,7 @@ package code.google.nfs.rpc.netty4.server;
 import code.google.nfs.rpc.ProtocolFactory;
 import code.google.nfs.rpc.RequestWrapper;
 import code.google.nfs.rpc.ResponseWrapper;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -30,10 +27,7 @@ public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
 
 	private static final Log LOGGER = LogFactory.getLog(Netty4ServerHandler.class);
 	
-	private ExecutorService threadpool;
-	
-	public Netty4ServerHandler(ExecutorService threadpool){
-		this.threadpool = threadpool;
+	public Netty4ServerHandler(){
 	}
 	
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable e)
@@ -56,36 +50,17 @@ public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
 	
 	@SuppressWarnings("unchecked")
 	private void handleRequest(final ChannelHandlerContext ctx, final Object message) {
-		try {
-			threadpool.execute(new HandlerRunnable(ctx, message, threadpool));
-		}
-		catch (RejectedExecutionException exception) {
-			LOGGER.error("server threadpool full,threadpool maxsize is:"
-					+ ((ThreadPoolExecutor) threadpool).getMaximumPoolSize());
-			if(message instanceof List){
-				List<RequestWrapper> requests = (List<RequestWrapper>) message;
-				for (final RequestWrapper request : requests) {
-					sendErrorResponse(ctx, request);
-				}
-			}
-			else{
-				sendErrorResponse(ctx, (RequestWrapper) message);
-			}
-		}
-	}
+    EventLoop eventLoop = ctx.channel().eventLoop();
 
-	private void sendErrorResponse(final ChannelHandlerContext ctx,final RequestWrapper request) {
-		ResponseWrapper responseWrapper = new ResponseWrapper(request.getId(),request.getCodecType(),request.getProtocolType());
-		responseWrapper
-				.setException(new Exception("server threadpool full,maybe because server is slow or too many requests"));
-		ChannelFuture wf = ctx.channel().writeAndFlush(responseWrapper);
-		wf.addListener(new ChannelFutureListener() {
-			public void operationComplete(ChannelFuture future) throws Exception {
-				if(!future.isSuccess()){
-					LOGGER.error("server write response error,request id is: "+request.getId());
-				}
-			}
-		});
+    // pipeline
+    if(message instanceof List){
+      List messages = (List) message;
+      for (Object messageObject : messages) {
+        eventLoop.execute(new HandlerRunnable(ctx, messageObject));
+      }
+    } else {
+      eventLoop.execute(new HandlerRunnable(ctx, message));
+    }
 	}
 
   private static final ChannelFutureListener listener = new ChannelFutureListener() {
@@ -102,40 +77,27 @@ public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
 		
 		private Object message;
 		
-		private ExecutorService threadPool;
-
-
-		public HandlerRunnable(ChannelHandlerContext ctx,Object message,ExecutorService threadPool){
+    public HandlerRunnable(ChannelHandlerContext ctx,Object message){
 			this.ctx = ctx;
 			this.message = message;
-			this.threadPool = threadPool;
 		}
 		
 		@SuppressWarnings("rawtypes")
 		public void run() {
-			// pipeline
-			if(message instanceof List){
-				List messages = (List) message;
-				for (Object messageObject : messages) {
-					threadPool.execute(new HandlerRunnable(ctx, messageObject, threadPool));
-				}
-			}
-			else{
-				RequestWrapper request = (RequestWrapper)message;
-				long beginTime = System.currentTimeMillis();
-				ResponseWrapper responseWrapper = ProtocolFactory.getServerHandler(request.getProtocolType()).handleRequest(request);
-				final int id = request.getId();
-				// already timeout,so not return
-				if ((System.currentTimeMillis() - beginTime) >= request.getTimeout()) {
-					LOGGER.warn("timeout,so give up send response to client,requestId is:"
-							+ id
-							+ ",client is:"
-							+ ctx.channel().remoteAddress()+",consumetime is:"+(System.currentTimeMillis() - beginTime)+",timeout is:"+request.getTimeout());
-					return;
-				}
-				ChannelFuture wf = ctx.writeAndFlush(responseWrapper);
-				wf.addListener(listener);
-			}
+      RequestWrapper request = (RequestWrapper)message;
+      long beginTime = System.currentTimeMillis();
+      ResponseWrapper responseWrapper = ProtocolFactory.getServerHandler(request.getProtocolType()).handleRequest(request);
+      final int id = request.getId();
+      // already timeout,so not return
+      if ((System.currentTimeMillis() - beginTime) >= request.getTimeout()) {
+        LOGGER.warn("timeout,so give up send response to client,requestId is:"
+            + id
+            + ",client is:"
+            + ctx.channel().remoteAddress()+",consumetime is:"+(System.currentTimeMillis() - beginTime)+",timeout is:"+request.getTimeout());
+        return;
+      }
+      ChannelFuture wf = ctx.writeAndFlush(responseWrapper);
+      wf.addListener(listener);
 		}
 
 	}

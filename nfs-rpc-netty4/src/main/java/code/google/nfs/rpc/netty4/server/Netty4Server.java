@@ -45,12 +45,13 @@ public class Netty4Server implements Server {
 	
 	private static final int PROCESSORS = Runtime.getRuntime().availableProcessors();
 	
-	public Netty4Server() {
+	public Netty4Server(int workerThreads) {
 		ThreadFactory serverBossTF = new NamedThreadFactory("NETTYSERVER-BOSS-");
 		ThreadFactory serverWorkerTF = new NamedThreadFactory("NETTYSERVER-WORKER-");
 		EventLoopGroup bossGroup = new EpollEventLoopGroup(PROCESSORS, serverBossTF);
-		EpollEventLoopGroup workerGroup = new EpollEventLoopGroup(PROCESSORS * 2,serverWorkerTF);
-		workerGroup.setIoRatio(Integer.parseInt(System.getProperty("nfs.rpc.io.ratio", "80")));
+    EpollEventLoopGroup workerGroup =
+        new EpollEventLoopGroup(workerThreads > 0 ? workerThreads : PROCESSORS * 2, serverWorkerTF);
+    workerGroup.setIoRatio(Integer.parseInt(System.getProperty("nfs.rpc.io.ratio", "30")));
 		bootstrap = new ServerBootstrap();
 		bootstrap.group(bossGroup,workerGroup)
 			     .channel(EpollServerSocketChannel.class)
@@ -59,7 +60,7 @@ public class Netty4Server implements Server {
 			     .option(ChannelOption.TCP_NODELAY, Boolean.parseBoolean(System.getProperty("nfs.rpc.tcp.nodelay", "true")));
 	}
 
-	public void start(int listenPort, final ExecutorService threadPool) throws Exception {
+	public void start(int listenPort, final ExecutorService ignore) throws Exception {
 		if(!startFlag.compareAndSet(false, true)){
 			return;
 		}
@@ -69,7 +70,7 @@ public class Netty4Server implements Server {
 				ChannelPipeline pipeline = channel.pipeline();
 				pipeline.addLast("decoder", new Netty4ProtocolDecoder());
 				pipeline.addLast("encoder", new Netty4ProtocolEncoder());
-				pipeline.addLast("handler", new Netty4ServerHandler(threadPool));
+				pipeline.addLast("handler", new Netty4ServerHandler());
 			}
 			
 		});
