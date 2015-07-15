@@ -34,7 +34,7 @@ subprojects {
   group = "info.minzhou.${githubProjectName}" // TEMPLATE: Set to organization of project
 }
 
-project(':nfs-rpc-common') {
+project(':lightningrpc-common') {
   dependencies {
     compile 'com.google.protobuf:protobuf-java:2.4.1'
     compile 'com.esotericsoftware.kryo:kryo:2.19'
@@ -46,7 +46,7 @@ project(':nfs-rpc-common') {
 }
 
 
-project(':nfs-rpc-netty') {
+project(':lightningrpc-netty') {
   dependencies {
     compile project(':nfs-rpc-common')
     compile 'io.netty:netty-all:4.0.18.Final'

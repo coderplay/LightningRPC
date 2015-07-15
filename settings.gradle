@@ -1,2 +1,2 @@
-rootProject.name='nfs-rpc'
-include 'nfs-rpc-common', 'nfs-rpc-netty'
+rootProject.name='lightningrpc'
+include 'lightningrpc-common', 'lightning-rpc-netty'
