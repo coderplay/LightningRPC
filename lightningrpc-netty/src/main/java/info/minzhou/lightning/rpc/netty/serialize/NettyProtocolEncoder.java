@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.serialize;
+package info.minzhou.lightning.rpc.netty.serialize;
 /**
  * nfs-rpc
  *   Apache License
@@ -16,10 +16,10 @@ import io.netty.channel.ChannelPromise;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4ProtocolEncoder extends ChannelOutboundHandlerAdapter {
+public class NettyProtocolEncoder extends ChannelOutboundHandlerAdapter {
 
   public void write(ChannelHandlerContext ctx, Object message, ChannelPromise promise) throws Exception {
-    Netty4ByteBufferWrapper byteBufferWrapper = new Netty4ByteBufferWrapper(ctx);
+    NettyByteBufferWrapper byteBufferWrapper = new NettyByteBufferWrapper(ctx);
     ProtocolUtils.encode(message, byteBufferWrapper);
     ctx.write(byteBufferWrapper.getBuffer(), promise);
   }

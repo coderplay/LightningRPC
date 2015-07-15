@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.benchmark;
+package info.minzhou.lightning.rpc.netty.benchmark;
 /**
  * nfs-rpc
  *   Apache License
@@ -8,7 +8,7 @@ package info.minzhou.lightning.rpc.netty4.benchmark;
 
 import info.minzhou.lightning.rpc.benchmark.AbstractRPCBenchmarkClient;
 import info.minzhou.lightning.rpc.benchmark.BenchmarkTestService;
-import info.minzhou.lightning.rpc.netty4.client.Netty4ClientInvocationHandler;
+import info.minzhou.lightning.rpc.netty.client.NettyClientInvocationHandler;
 
 import java.lang.reflect.Proxy;
 import java.net.InetSocketAddress;
@@ -20,10 +20,10 @@ import java.util.Map;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4RPCBenchmarkClient extends AbstractRPCBenchmarkClient {
+public class NettyRPCBenchmarkClient extends AbstractRPCBenchmarkClient {
 
   public static void main(String[] args) throws Exception {
-    new Netty4RPCBenchmarkClient().run(args);
+    new NettyRPCBenchmarkClient().run(args);
   }
 
   public BenchmarkTestService getProxyInstance(
@@ -31,9 +31,9 @@ public class Netty4RPCBenchmarkClient extends AbstractRPCBenchmarkClient {
       int connectTimeout, String targetInstanceName,
       Map<String, Integer> methodTimeouts, int codectype, Integer protocolType) {
     return (BenchmarkTestService) Proxy.newProxyInstance(
-        Netty4RPCBenchmarkClient.class.getClassLoader(),
+        NettyRPCBenchmarkClient.class.getClassLoader(),
         new Class<?>[]{BenchmarkTestService.class},
-        new Netty4ClientInvocationHandler(servers, clientNums,
+        new NettyClientInvocationHandler(servers, clientNums,
             connectTimeout, targetInstanceName, methodTimeouts, codectype, protocolType));
   }
 

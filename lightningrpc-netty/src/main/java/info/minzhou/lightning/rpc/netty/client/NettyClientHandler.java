@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.client;
+package info.minzhou.lightning.rpc.netty.client;
 /**
  * nfs-rpc
  *   Apache License
@@ -20,24 +20,24 @@ import java.util.List;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4ClientHandler extends ChannelInboundHandlerAdapter {
+public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
-  private static final Log LOGGER = LogFactory.getLog(Netty4ClientHandler.class);
+  private static final Log LOGGER = LogFactory.getLog(NettyClientHandler.class);
 
   private static final boolean isDebugEnabled = LOGGER.isDebugEnabled();
 
-  private Netty4ClientFactory factory;
+  private NettyClientFactory factory;
 
   private String key;
 
-  private Netty4Client client;
+  private NettyClient client;
 
-  public Netty4ClientHandler(Netty4ClientFactory factory, String key) {
+  public NettyClientHandler(NettyClientFactory factory, String key) {
     this.factory = factory;
     this.key = key;
   }
 
-  public void setClient(Netty4Client client) {
+  public void setClient(NettyClient client) {
     this.client = client;
   }
 

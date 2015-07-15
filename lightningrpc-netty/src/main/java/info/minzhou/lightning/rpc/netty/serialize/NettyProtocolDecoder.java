@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.serialize;
+package info.minzhou.lightning.rpc.netty.serialize;
 /**
  * nfs-rpc
  *   Apache License
@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4ProtocolDecoder extends ChannelInboundHandlerAdapter {
+public class NettyProtocolDecoder extends ChannelInboundHandlerAdapter {
 
   ByteBuf cumulation;
   private boolean singleDecode;
@@ -241,7 +241,7 @@ public class Netty4ProtocolDecoder extends ChannelInboundHandlerAdapter {
   }
 
   protected void decode(ChannelHandlerContext ctx, ByteBuf buf, List<Object> out) throws Exception {
-    Netty4ByteBufferWrapper wrapper = new Netty4ByteBufferWrapper(buf);
+    NettyByteBufferWrapper wrapper = new NettyByteBufferWrapper(buf);
     Object result = ProtocolUtils.decode(wrapper, null);
     if (result != null) {
       out.add(result);

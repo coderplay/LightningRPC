@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.server;
+package info.minzhou.lightning.rpc.netty.server;
 /**
  * nfs-rpc
  *   Apache License
@@ -8,8 +8,8 @@ package info.minzhou.lightning.rpc.netty4.server;
 
 import info.minzhou.lightning.rpc.NamedThreadFactory;
 import info.minzhou.lightning.rpc.ProtocolFactory;
-import info.minzhou.lightning.rpc.netty4.serialize.Netty4ProtocolDecoder;
-import info.minzhou.lightning.rpc.netty4.serialize.Netty4ProtocolEncoder;
+import info.minzhou.lightning.rpc.netty.serialize.NettyProtocolDecoder;
+import info.minzhou.lightning.rpc.netty.serialize.NettyProtocolEncoder;
 import info.minzhou.lightning.rpc.server.Server;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -19,9 +19,7 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.epoll.EpollEventLoopGroup;
 import io.netty.channel.epoll.EpollServerSocketChannel;
-import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -35,9 +33,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4Server implements Server {
+public class NettyServer implements Server {
 
-  private static final Log LOGGER = LogFactory.getLog(Netty4Server.class);
+  private static final Log LOGGER = LogFactory.getLog(NettyServer.class);
 
   private ServerBootstrap bootstrap = null;
 
@@ -45,7 +43,7 @@ public class Netty4Server implements Server {
 
   private static final int PROCESSORS = Runtime.getRuntime().availableProcessors();
 
-  public Netty4Server() {
+  public NettyServer() {
     ThreadFactory serverBossTF = new NamedThreadFactory("NETTYSERVER-BOSS-");
     ThreadFactory serverWorkerTF = new NamedThreadFactory("NETTYSERVER-WORKER-");
     EventLoopGroup bossGroup = new EpollEventLoopGroup(PROCESSORS, serverBossTF);
@@ -69,9 +67,9 @@ public class Netty4Server implements Server {
 
       protected void initChannel(SocketChannel channel) throws Exception {
         ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addLast("decoder", new Netty4ProtocolDecoder());
-        pipeline.addLast("encoder", new Netty4ProtocolEncoder());
-        pipeline.addLast("handler", new Netty4ServerHandler(threadPool));
+        pipeline.addLast("decoder", new NettyProtocolDecoder());
+        pipeline.addLast("encoder", new NettyProtocolEncoder());
+        pipeline.addLast("handler", new NettyServerHandler(threadPool));
       }
 
     });

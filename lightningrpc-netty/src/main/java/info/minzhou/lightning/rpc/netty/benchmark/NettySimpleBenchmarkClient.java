@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.benchmark;
+package info.minzhou.lightning.rpc.netty.benchmark;
 /**
  * nfs-rpc
  *   Apache License
@@ -8,21 +8,21 @@ package info.minzhou.lightning.rpc.netty4.benchmark;
 
 import info.minzhou.lightning.rpc.benchmark.AbstractSimpleProcessorBenchmarkClient;
 import info.minzhou.lightning.rpc.client.ClientFactory;
-import info.minzhou.lightning.rpc.netty4.client.Netty4ClientFactory;
+import info.minzhou.lightning.rpc.netty.client.NettyClientFactory;
 
 /**
  * Netty Direct Call RPC Benchmark Client
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4SimpleBenchmarkClient extends AbstractSimpleProcessorBenchmarkClient {
+public class NettySimpleBenchmarkClient extends AbstractSimpleProcessorBenchmarkClient {
 
   public static void main(String[] args) throws Exception {
-    new Netty4SimpleBenchmarkClient().run(args);
+    new NettySimpleBenchmarkClient().run(args);
   }
 
   public ClientFactory getClientFactory() {
-    return Netty4ClientFactory.getInstance();
+    return NettyClientFactory.getInstance();
   }
 
 }

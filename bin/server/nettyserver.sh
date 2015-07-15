@@ -1,2 +1,2 @@
 cd `dirname $0`
-sh servercommon.sh "code.google.nfs.rpc.netty.benchmark.NettyBenchmarkServer" "server.log.netty"
+sh servercommon.sh "info.minzhou.lightning.rpc.netty.benchmark.NettyBenchmarkServer" "server.log.netty"

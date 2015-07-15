@@ -42,13 +42,12 @@ project(':lightningrpc-common') {
     testCompile 'junit:junit:3.8.1'
   }
 
-
 }
 
 
 project(':lightningrpc-netty') {
   dependencies {
-    compile project(':nfs-rpc-common')
+    compile project(':lightningrpc-common')
     compile 'io.netty:netty-all:4.0.18.Final'
   }
 }

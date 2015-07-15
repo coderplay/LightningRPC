@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.client;
+package info.minzhou.lightning.rpc.netty.client;
 /**
  * nfs-rpc
  *   Apache License
@@ -18,17 +18,17 @@ import java.util.Map;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4ClientInvocationHandler extends
+public class NettyClientInvocationHandler extends
     AbstractClientInvocationHandler {
 
-  public Netty4ClientInvocationHandler(List<InetSocketAddress> servers,
-                                       int clientNums, int connectTimeout, String targetInstanceName,
-                                       Map<String, Integer> methodTimeouts, int codectype, Integer protocolType) {
+  public NettyClientInvocationHandler(List<InetSocketAddress> servers,
+                                      int clientNums, int connectTimeout, String targetInstanceName,
+                                      Map<String, Integer> methodTimeouts, int codectype, Integer protocolType) {
     super(servers, clientNums, connectTimeout, targetInstanceName, methodTimeouts, codectype, protocolType);
   }
 
   public ClientFactory getClientFactory() {
-    return Netty4ClientFactory.getInstance();
+    return NettyClientFactory.getInstance();
   }
 
 }

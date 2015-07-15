@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.server;
+package info.minzhou.lightning.rpc.netty.server;
 /**
  * nfs-rpc
  *   Apache License
@@ -23,17 +23,17 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * Netty4 Server Handler
+ * Netty Server Handler
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4ServerHandler extends ChannelInboundHandlerAdapter {
+public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
-  private static final Log LOGGER = LogFactory.getLog(Netty4ServerHandler.class);
+  private static final Log LOGGER = LogFactory.getLog(NettyServerHandler.class);
 
   private ExecutorService threadpool;
 
-  public Netty4ServerHandler(ExecutorService threadpool) {
+  public NettyServerHandler(ExecutorService threadpool) {
     this.threadpool = threadpool;
   }
 

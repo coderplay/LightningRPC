@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.benchmark;
+package info.minzhou.lightning.rpc.netty.benchmark;
 /**
  * nfs-rpc
  *   Apache License
@@ -7,7 +7,7 @@ package info.minzhou.lightning.rpc.netty4.benchmark;
  */
 
 import info.minzhou.lightning.rpc.benchmark.AbstractBenchmarkServer;
-import info.minzhou.lightning.rpc.netty4.server.Netty4Server;
+import info.minzhou.lightning.rpc.netty.server.NettyServer;
 import info.minzhou.lightning.rpc.server.Server;
 
 /**
@@ -15,14 +15,14 @@ import info.minzhou.lightning.rpc.server.Server;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4BenchmarkServer extends AbstractBenchmarkServer {
+public class NettyBenchmarkServer extends AbstractBenchmarkServer {
 
   public static void main(String[] args) throws Exception {
-    new Netty4BenchmarkServer().run(args);
+    new NettyBenchmarkServer().run(args);
   }
 
   public Server getServer() {
-    return new Netty4Server();
+    return new NettyServer();
   }
 
 }

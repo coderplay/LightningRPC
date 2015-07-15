@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.client;
+package info.minzhou.lightning.rpc.netty.client;
 /**
  * nfs-rpc
  *   Apache License
@@ -9,16 +9,14 @@ package info.minzhou.lightning.rpc.netty4.client;
 import info.minzhou.lightning.rpc.NamedThreadFactory;
 import info.minzhou.lightning.rpc.client.AbstractClientFactory;
 import info.minzhou.lightning.rpc.client.Client;
-import info.minzhou.lightning.rpc.netty4.serialize.Netty4ProtocolDecoder;
-import info.minzhou.lightning.rpc.netty4.serialize.Netty4ProtocolEncoder;
+import info.minzhou.lightning.rpc.netty.serialize.NettyProtocolDecoder;
+import info.minzhou.lightning.rpc.netty.serialize.NettyProtocolEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.channel.epoll.EpollEventLoopGroup;
 import io.netty.channel.epoll.EpollSocketChannel;
-import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -26,23 +24,23 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * Netty Client Factory,to create client based on netty4 API
+ * Netty Client Factory,to create client based on netty API
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4ClientFactory extends AbstractClientFactory {
+public class NettyClientFactory extends AbstractClientFactory {
 
-  private static final Log LOGGER = LogFactory.getLog(Netty4ClientFactory.class);
+  private static final Log LOGGER = LogFactory.getLog(NettyClientFactory.class);
 
   private static final int PROCESSORS = Runtime.getRuntime().availableProcessors();
 
-  private static AbstractClientFactory _self = new Netty4ClientFactory();
+  private static AbstractClientFactory _self = new NettyClientFactory();
 
   private static final ThreadFactory workerThreadFactory = new NamedThreadFactory("NETTYCLIENT-WORKER-");
 
   private static EventLoopGroup workerGroup = new EpollEventLoopGroup(PROCESSORS, workerThreadFactory);
 
-  private Netty4ClientFactory() {
+  private NettyClientFactory() {
     ;
   }
 
@@ -64,13 +62,13 @@ public class Netty4ClientFactory extends AbstractClientFactory {
     } else {
       bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, connectTimeout);
     }
-    final Netty4ClientHandler handler = new Netty4ClientHandler(this, key);
+    final NettyClientHandler handler = new NettyClientHandler(this, key);
     bootstrap.handler(new ChannelInitializer<SocketChannel>() {
 
       protected void initChannel(SocketChannel channel) throws Exception {
         ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addLast("decoder", new Netty4ProtocolDecoder());
-        pipeline.addLast("encoder", new Netty4ProtocolEncoder());
+        pipeline.addLast("decoder", new NettyProtocolDecoder());
+        pipeline.addLast("encoder", new NettyProtocolEncoder());
         pipeline.addLast("handler", handler);
       }
 
@@ -89,7 +87,7 @@ public class Netty4ClientFactory extends AbstractClientFactory {
       LOGGER.error("Create connection to " + targetIP + ":" + targetPort + " error", future.cause());
       throw new Exception("Create connection to " + targetIP + ":" + targetPort + " error", future.cause());
     }
-    Netty4Client client = new Netty4Client(future, key, connectTimeout);
+    NettyClient client = new NettyClient(future, key, connectTimeout);
     handler.setClient(client);
     return client;
   }

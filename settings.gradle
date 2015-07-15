@@ -1,2 +1,2 @@
 rootProject.name='lightningrpc'
-include 'lightningrpc-common', 'lightning-rpc-netty'
+include 'lightningrpc-common', 'lightningrpc-netty'

@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty4.serialize;
+package info.minzhou.lightning.rpc.netty.serialize;
 /**
  * nfs-rpc
  *   Apache License
@@ -15,21 +15,21 @@ import io.netty.channel.ChannelHandlerContext;
  *
  * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
-public class Netty4ByteBufferWrapper implements ByteBufferWrapper {
+public class NettyByteBufferWrapper implements ByteBufferWrapper {
 
   private ByteBuf buffer;
 
   private ChannelHandlerContext ctx;
 
-  public Netty4ByteBufferWrapper() {
+  public NettyByteBufferWrapper() {
     ;
   }
 
-  public Netty4ByteBufferWrapper(ByteBuf in) {
+  public NettyByteBufferWrapper(ByteBuf in) {
     buffer = in;
   }
 
-  public Netty4ByteBufferWrapper(ChannelHandlerContext ctx) {
+  public NettyByteBufferWrapper(ChannelHandlerContext ctx) {
     this.ctx = ctx;
   }
 

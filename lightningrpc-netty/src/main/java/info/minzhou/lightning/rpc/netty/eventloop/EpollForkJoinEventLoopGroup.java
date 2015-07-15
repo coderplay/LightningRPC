@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package info.minzhou.lightning.rpc.netty4.eventloop;
+package info.minzhou.lightning.rpc.netty.eventloop;
 
 import io.netty.channel.*;
 import io.netty.util.concurrent.EventExecutor;
