@@ -1,10 +1,10 @@
-package info.minzhou.lightning.rpc.benchmark;
-
-import java.util.ArrayList;
-import java.util.List;
+package info.minzhou.lightning.rpc.protocol;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.Serializer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Kryo Utils

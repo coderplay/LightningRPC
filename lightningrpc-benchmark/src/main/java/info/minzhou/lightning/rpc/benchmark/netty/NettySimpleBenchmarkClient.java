@@ -1,4 +1,4 @@
-package info.minzhou.lightning.rpc.netty.benchmark;
+package info.minzhou.lightning.rpc.benchmark.netty;
 
 
 import info.minzhou.lightning.rpc.benchmark.AbstractSimpleProcessorBenchmarkClient;

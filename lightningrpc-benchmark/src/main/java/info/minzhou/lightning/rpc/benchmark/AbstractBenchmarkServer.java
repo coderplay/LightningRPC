@@ -9,6 +9,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import info.minzhou.lightning.rpc.NamedThreadFactory;
+import info.minzhou.lightning.rpc.protocol.KryoUtils;
 import info.minzhou.lightning.rpc.protocol.PBDecoder;
 import info.minzhou.lightning.rpc.protocol.RPCProtocol;
 import info.minzhou.lightning.rpc.protocol.SimpleProcessorProtocol;

@@ -89,7 +89,7 @@ def docTasks = [:]
 }
 
 githubPages {
-  repoUri = "git@github.com:TangoMe/${rootProject.githubProjectName}.git"
+  repoUri = "git@github.com:coderplay/${rootProject.githubProjectName}.git"
   pages {
     docTasks.each { shortName, docTask ->
       from(docTask.outputs.files) {
@@ -110,12 +110,12 @@ task releaseTarGz(type: Tar, dependsOn: subprojects.assemble) {
   into "${baseName}"
   compression = Compression.GZIP
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-  from(project.file("bin")) { into "bin/" }
-  from(project.file("conf")) { into "conf/" }
-  from(project.file("logs")) { into "logs/" }
   from 'LICENSE'
   from 'README.md'
   subprojects.each { child ->
+    from(child.file("bin")) { into "bin/" }
+    from(child.file("conf")) { into "conf/" }
+    from(child.file("logs")) { into "logs/" }
     from(child.jar.archivePath)
     from(child.configurations.runtime) { into("lib/") }
   }

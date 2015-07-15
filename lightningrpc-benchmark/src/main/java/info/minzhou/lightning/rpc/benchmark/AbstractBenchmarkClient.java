@@ -15,6 +15,7 @@ import java.util.concurrent.CyclicBarrier;
 import com.esotericsoftware.kryo.serializers.DefaultArraySerializers;
 
 import info.minzhou.lightning.rpc.Codecs;
+import info.minzhou.lightning.rpc.protocol.KryoUtils;
 import info.minzhou.lightning.rpc.protocol.PBDecoder;
 
 /**

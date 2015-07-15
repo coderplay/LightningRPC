@@ -48,11 +48,16 @@ project(':lightningrpc-common') {
 
 }
 
-
 project(':lightningrpc-netty') {
   dependencies {
     compile project(':lightningrpc-common')
     compile 'io.netty:netty-all:4.0.29.Final'
+  }
+}
+
+project(':lightningrpc-benchmark') {
+  dependencies {
+    compile project(':lightningrpc-netty')
   }
 }
 

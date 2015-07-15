@@ -1,0 +1,1 @@
+apply from: 'http://artifacts.minzhou.info/gradle-minzhou-local/artifactory.gradle'

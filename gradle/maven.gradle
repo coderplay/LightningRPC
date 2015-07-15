@@ -39,12 +39,12 @@ task uploadMavenCentral(type:Upload, dependsOn: signArchives) {
                 // Closure to configure all the POM with extra info, common to all projects
                 pom.project {
                     name "${project.name}"
-                    description "${project.name} developed by TangoMe"
+                    description "${project.name} developed by Min Zhou"
                     developers {
                         developer {
-                            id 'tangogithub'
-                            name 'TangoMe Open Source Development'
-                            email 'talent@tango.me'
+                            id 'mzhou'
+                            name 'Min Zhou Open Source Development'
+                            email 'mzhou@apache.org'
                         }
                     }
                     licenses {
@@ -54,15 +54,15 @@ task uploadMavenCentral(type:Upload, dependsOn: signArchives) {
                             distribution 'repo'
                         }
                     }
-                    url "https://github.com/TangoMe/${rootProject.githubProjectName}"
+                    url "https://github.com/coderplay/${rootProject.githubProjectName}"
                     scm {
-                        connection "scm:git:git@github.com:TangoMe/${rootProject.githubProjectName}.git"
-                        url "scm:git:git@github.com:TangoMe/${rootProject.githubProjectName}.git"
-                        developerConnection "scm:git:git@github.com:TangoMe/${rootProject.githubProjectName}.git"
+                        connection "scm:git:git@github.com:coderplay/${rootProject.githubProjectName}.git"
+                        url "scm:git:git@github.com:coderplay/${rootProject.githubProjectName}.git"
+                        developerConnection "scm:git:git@github.com:coderplay/${rootProject.githubProjectName}.git"
                     }
                     issueManagement {
                         system 'github'
-                        url "https://github.com/TangoMe/${rootProject.githubProjectName}/issues"
+                        url "https://github.com/coderplay/${rootProject.githubProjectName}/issues"
                     }
                 }
             }

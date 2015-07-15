@@ -1,7 +1,5 @@
 package info.minzhou.lightning.rpc.protocol;
 
-import info.minzhou.lightning.rpc.benchmark.KryoUtils;
-
 import com.esotericsoftware.kryo.io.Input;
 
 /**
