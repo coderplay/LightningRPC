@@ -17,3 +17,8 @@ build/
 #maven
 target/
 classes/
+
+#Distribution
+*.tgz
+*.tar.gz
+*.zip
