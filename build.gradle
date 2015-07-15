@@ -58,6 +58,7 @@ project(':lightningrpc-netty') {
 project(':lightningrpc-benchmark') {
   dependencies {
     compile project(':lightningrpc-netty')
+    compile 'com.typesafe:config:1.3.0'
   }
 }
 

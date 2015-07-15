@@ -15,7 +15,7 @@ public class ResponseWrapper {
 	
 	private Throwable exception = null;
 	
-	private int codecType = Codecs.HESSIAN_CODEC;
+	private final int codecType;
 	
 	private int protocolType;
 	

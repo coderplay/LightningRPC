@@ -14,6 +14,8 @@ import java.util.concurrent.CyclicBarrier;
 
 import com.esotericsoftware.kryo.serializers.DefaultArraySerializers;
 
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 import info.minzhou.lightning.rpc.Codecs;
 import info.minzhou.lightning.rpc.protocol.KryoUtils;
 import info.minzhou.lightning.rpc.protocol.PBDecoder;
@@ -72,24 +74,21 @@ public abstract class AbstractBenchmarkClient {
 	private static long above1000sum;
 
 	public void run(String[] args) throws Exception {
-		if (args == null || (args.length != 7 && args.length != 8)) {
-			throw new IllegalArgumentException(
-					"must give seven or eight args, serverIP serverPort concurrents timeout codectype requestSize runtime(seconds) clientNums");
-		}
+    Config conf = ConfigFactory.load();
+    // server config
+		final String serverIP = conf.getString("server.host");
+		final int serverPort = conf.getInt("server.port");
+    // client config
+		final int concurrents = conf.getInt("client.concurrency");
+    final int clientNums = conf.getInt("client.connections");
+    final int timeout = conf.getInt("client.timeout");
 
-		final String serverIP = args[0];
-		final int serverPort = Integer.parseInt(args[1]);
-		final int concurrents = Integer.parseInt(args[2]);
-		final int timeout = Integer.parseInt(args[3]);
-		final int codectype = Integer.parseInt(args[4]);
-		final int requestSize = Integer.parseInt(args[5]);
-		runtime = Integer.parseInt(args[6]);
+    // reuqest config
+		final int codectype = conf.getInt("client.request.type");
+		final int requestSize = conf.getInt("client.request.size");
+		runtime = conf.getInt("client.request.duration");
+    boolean isWriteResult = conf.getBoolean("client.request.statistics");
 		final long endtime = System.currentTimeMillis() + runtime * 1000;
-		int tmpClientNums = 1;
-		if (args.length == 8) {
-			tmpClientNums = Integer.parseInt(args[7]);
-		}
-		final int clientNums = tmpClientNums;
 
 		// Print start info
 		Date currentDate = new Date();
@@ -215,7 +214,7 @@ public abstract class AbstractBenchmarkClient {
 			}
 		}
 
-		boolean isWriteResult = Boolean.parseBoolean(System.getProperty("write.statistics", "false"));
+
 		if (isWriteResult) {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(
 					"benchmark.all.results"));
@@ -272,12 +271,12 @@ public abstract class AbstractBenchmarkClient {
 			int clientNums, int rpcTimeout, int codecType, int requestSize,
 			CyclicBarrier barrier, CountDownLatch latch, long endTime, long startTime);
 
-    protected void startRunnables(List<ClientRunnable> runnables) {
-        for (int i = 0; i < runnables.size(); i++) {
-            final ClientRunnable runnable = runnables.get(i);
-            Thread thread = new Thread(runnable, "benchmarkclient-" + i);
-            thread.start();
-}
+  protected void startRunnables(List<ClientRunnable> runnables) {
+    for (int i = 0; i < runnables.size(); i++) {
+      final ClientRunnable runnable = runnables.get(i);
+      Thread thread = new Thread(runnable, "benchmarkclient-" + i);
+      thread.start();
     }
+  }
 
 }

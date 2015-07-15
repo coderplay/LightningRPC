@@ -30,7 +30,7 @@ public class RequestWrapper {
 	
 	private int protocolType;
 	
-	private int codecType = Codecs.HESSIAN_CODEC;
+	private final int codecType;
 	
 	private int messageLen;
 

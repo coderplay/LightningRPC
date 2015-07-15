@@ -17,11 +17,9 @@ public class Codecs {
 	
 	public static final int JAVA_CODEC = 1;
 	
-	public static final int HESSIAN_CODEC = 2;
+	public static final int PB_CODEC = 2;
 	
-	public static final int PB_CODEC = 3;
-	
-	public static final int KRYO_CODEC = 4;
+	public static final int KRYO_CODEC = 3;
 	
 	private static Encoder[] encoders = new Encoder[5];
 	

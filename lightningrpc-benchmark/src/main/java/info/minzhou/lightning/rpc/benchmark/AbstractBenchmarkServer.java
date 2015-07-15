@@ -1,13 +1,9 @@
 package info.minzhou.lightning.rpc.benchmark;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
+import com.esotericsoftware.kryo.serializers.DefaultArraySerializers;
+import com.google.protobuf.ByteString;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 import info.minzhou.lightning.rpc.NamedThreadFactory;
 import info.minzhou.lightning.rpc.protocol.KryoUtils;
 import info.minzhou.lightning.rpc.protocol.PBDecoder;
@@ -16,8 +12,9 @@ import info.minzhou.lightning.rpc.protocol.SimpleProcessorProtocol;
 import info.minzhou.lightning.rpc.server.Server;
 import info.minzhou.lightning.rpc.server.ServerProcessor;
 
-import com.esotericsoftware.kryo.serializers.DefaultArraySerializers;
-import com.google.protobuf.ByteString;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.*;
 
 /**
  * Abstract benchmark server
@@ -31,13 +28,10 @@ public abstract class AbstractBenchmarkServer {
 			"yyyy-MM-dd HH:mm:ss");
 
   public void run(String[] args) throws Exception {
-    if (args == null || args.length != 3) {
-      throw new IllegalArgumentException(
-          "must give three args: listenPort | maxThreads | responseSize");
-    }
-    int listenPort = Integer.parseInt(args[0]);
-    int maxThreads = Integer.parseInt(args[1]);
-    final int responseSize = Integer.parseInt(args[2]);
+    Config conf = ConfigFactory.load();
+    int listenPort = conf.getInt("server.port");
+    int maxThreads = conf.getInt("server.threads");
+    final int responseSize = conf.getInt("server.response.size");
     System.out.println(dateFormat.format(new Date())
         + " ready to start server,listenPort is: " + listenPort
         + ",maxThreads is:" + maxThreads + ",responseSize is:"
