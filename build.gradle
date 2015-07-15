@@ -36,10 +36,14 @@ subprojects {
 
 project(':lightningrpc-common') {
   dependencies {
-    compile 'com.google.protobuf:protobuf-java:2.4.1'
-    compile 'com.esotericsoftware.kryo:kryo:2.19'
-    compile 'commons-logging:commons-logging:1.1'
-    testCompile 'junit:junit:3.8.1'
+    compile 'com.google.protobuf:protobuf-java:2.6.1'
+    compile 'com.esotericsoftware:kryo:3.0.2'
+    compile ( 'commons-logging:commons-logging:1.2' ) {
+      exclude group: 'javax.servlet'
+      exclude group: 'avalon-framework'
+    }
+
+    testCompile 'junit:junit:4.12'
   }
 
 }
@@ -48,7 +52,7 @@ project(':lightningrpc-common') {
 project(':lightningrpc-netty') {
   dependencies {
     compile project(':lightningrpc-common')
-    compile 'io.netty:netty-all:4.0.18.Final'
+    compile 'io.netty:netty-all:4.0.29.Final'
   }
 }
 
