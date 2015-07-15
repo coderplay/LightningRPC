@@ -7,8 +7,6 @@ package code.google.nfs.rpc;
  */
 import code.google.nfs.rpc.protocol.Decoder;
 import code.google.nfs.rpc.protocol.Encoder;
-import code.google.nfs.rpc.protocol.HessianDecoder;
-import code.google.nfs.rpc.protocol.HessianEncoder;
 import code.google.nfs.rpc.protocol.JavaDecoder;
 import code.google.nfs.rpc.protocol.JavaEncoder;
 import code.google.nfs.rpc.protocol.KryoDecoder;
@@ -16,7 +14,7 @@ import code.google.nfs.rpc.protocol.KryoEncoder;
 import code.google.nfs.rpc.protocol.PBDecoder;
 import code.google.nfs.rpc.protocol.PBEncoder;
 /**
- * Encoder & Decoder Register
+ * Encoder and Decoder Register
  * 
  * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
@@ -36,11 +34,9 @@ public class Codecs {
 	
 	static{
 		addEncoder(JAVA_CODEC, new JavaEncoder());
-		addEncoder(HESSIAN_CODEC, new HessianEncoder());
 		addEncoder(PB_CODEC, new PBEncoder());
 		addEncoder(KRYO_CODEC, new KryoEncoder());
 		addDecoder(JAVA_CODEC, new JavaDecoder());
-		addDecoder(HESSIAN_CODEC, new HessianDecoder());
 		addDecoder(PB_CODEC, new PBDecoder());
 		addDecoder(KRYO_CODEC, new KryoDecoder());
 	}

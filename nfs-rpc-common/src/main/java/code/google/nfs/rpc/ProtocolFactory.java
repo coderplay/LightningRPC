@@ -13,7 +13,7 @@ import code.google.nfs.rpc.server.ServerHandler;
 import code.google.nfs.rpc.server.SimpleProcessorServerHandler;
 
 /**
- * Protocol Factory,for set Protocol class & serverHandler class
+ * Protocol Factory,for set Protocol class and serverHandler class
  * 
  * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */

@@ -28,7 +28,7 @@ public interface ClientFactory {
 	public static SendLimitPolicy sendLimitPolicy = SendLimitPolicy.REJECT;
 	
 	/**
-	 * get client,default targetIP:targetPort --> one connection
+	 * get client,default targetIP:targetPort  one connection
 	 * u can give custom the key by give customKey
 	 */
 	public Client get(final String targetIP, final int targetPort,

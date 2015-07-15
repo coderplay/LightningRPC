@@ -13,13 +13,13 @@ package code.google.nfs.rpc.protocol;
 public interface Protocol {
 	
 	/**
-	 * encode Message to byte & write to network framework
+	 * encode Message to byte and write to network framework
 	 * 
 	 * @param message
-	 * @param byteBuffer
+	 * @param bytebufferWrapper
 	 * @throws Exception
 	 */
-	public ByteBufferWrapper encode(Object message,ByteBufferWrapper bytebufferWrapper) throws Exception;
+	public ByteBufferWrapper encode(Object message, ByteBufferWrapper bytebufferWrapper) throws Exception;
 
 	/**
 	 * decode stream to object
