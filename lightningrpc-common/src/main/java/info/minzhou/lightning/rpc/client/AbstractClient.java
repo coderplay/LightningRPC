@@ -1,11 +1,6 @@
 package info.minzhou.lightning.rpc.client;
 
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,7 +16,6 @@ import info.minzhou.lightning.rpc.ResponseWrapper;
 /**
  * Common Client,support sync invoke
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public abstract class AbstractClient implements Client {
 

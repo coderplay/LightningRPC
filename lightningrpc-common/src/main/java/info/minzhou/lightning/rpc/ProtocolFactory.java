@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import info.minzhou.lightning.rpc.protocol.Protocol;
 import info.minzhou.lightning.rpc.protocol.RPCProtocol;
 import info.minzhou.lightning.rpc.protocol.SimpleProcessorProtocol;
@@ -15,7 +10,6 @@ import info.minzhou.lightning.rpc.server.SimpleProcessorServerHandler;
 /**
  * Protocol Factory,for set Protocol class and serverHandler class
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class ProtocolFactory {
 	

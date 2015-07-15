@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.netty.server;
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.NamedThreadFactory;
 import info.minzhou.lightning.rpc.ProtocolFactory;
@@ -31,7 +26,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Netty Server
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyServer implements Server {
 

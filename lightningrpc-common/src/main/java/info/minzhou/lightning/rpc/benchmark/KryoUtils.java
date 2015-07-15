@@ -9,7 +9,6 @@ import com.esotericsoftware.kryo.Serializer;
 /**
  * Kryo Utils
  * 
- * @author <a href="mailto:jlusdy@gmail.com">jlusdy</a>
  */
 public class KryoUtils {
 	@SuppressWarnings("rawtypes")

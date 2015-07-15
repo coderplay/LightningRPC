@@ -7,7 +7,6 @@ import com.esotericsoftware.kryo.io.Input;
 /**
  * Kryo Decoder
  * 
- * @author <a href="mailto:jlusdy@gmail.com">jlusdy</a>
  */
 public class KryoDecoder implements Decoder {
 	/**

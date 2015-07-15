@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.server;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,7 +12,6 @@ import info.minzhou.lightning.rpc.ResponseWrapper;
 /**
  * Direct Call RPC Server Handler
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class SimpleProcessorServerHandler implements ServerHandler{
 

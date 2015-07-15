@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.server;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +14,6 @@ import info.minzhou.lightning.rpc.RequestWrapper;
 /**
  * Reflection RPC Server Handler 
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class RPCServerHandler implements ServerHandler {
 

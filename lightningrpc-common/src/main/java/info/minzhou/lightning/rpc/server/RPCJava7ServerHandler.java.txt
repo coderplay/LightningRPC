@@ -3,7 +3,7 @@ package com.bluedavy.rpc.server;
  * nfs-rpc
  *   Apache License
  *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
+
  */
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;

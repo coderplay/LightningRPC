@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.netty.serialize;
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
@@ -22,7 +17,6 @@ import java.util.List;
 /**
  * decode byte[]
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyProtocolDecoder extends ChannelInboundHandlerAdapter {
 

@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.benchmark;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
@@ -12,7 +7,6 @@ import info.minzhou.lightning.rpc.client.ClientFactory;
 /**
  * Test for RPC based on direct call Benchmark
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public abstract class AbstractSimpleProcessorBenchmarkClient extends AbstractBenchmarkClient{
 	

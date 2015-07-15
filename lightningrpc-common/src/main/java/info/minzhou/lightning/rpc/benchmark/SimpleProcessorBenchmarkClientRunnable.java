@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.benchmark;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -21,7 +16,6 @@ import info.minzhou.lightning.rpc.protocol.SimpleProcessorProtocol;
 /**
  * Simple Processor RPC Benchmark Client Thread
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class SimpleProcessorBenchmarkClientRunnable implements ClientRunnable {
 

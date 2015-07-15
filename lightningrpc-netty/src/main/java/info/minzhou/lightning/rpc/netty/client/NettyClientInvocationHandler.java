@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.netty.client;
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.client.AbstractClientInvocationHandler;
 import info.minzhou.lightning.rpc.client.ClientFactory;
@@ -16,7 +11,6 @@ import java.util.Map;
 /**
  * Netty Client Invocation Handler for Client Proxy
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyClientInvocationHandler extends
     AbstractClientInvocationHandler {

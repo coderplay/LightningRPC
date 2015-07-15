@@ -8,7 +8,6 @@ import com.esotericsoftware.kryo.io.Output;
 /**
  * ResponseObject Serializer
  * 
- * @author <a href="mailto:jlusdy@gmail.com">jlusdy</a>
  */
 public class ResponseObjectSerializer extends Serializer<ResponseObject> {
 	/**

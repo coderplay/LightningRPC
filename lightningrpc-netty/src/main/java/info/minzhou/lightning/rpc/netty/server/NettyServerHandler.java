@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.netty.server;
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.ProtocolFactory;
 import info.minzhou.lightning.rpc.RequestWrapper;
@@ -25,7 +20,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * Netty Server Handler
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 

@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.protocol;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +59,6 @@ import info.minzhou.lightning.rpc.ResponseWrapper;
  *  BodyClassName
  *  BODY if need than set
  *  
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class RPCProtocol implements Protocol {
 	

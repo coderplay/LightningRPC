@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.netty.client;
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.NamedThreadFactory;
 import info.minzhou.lightning.rpc.client.AbstractClientFactory;
@@ -26,7 +21,6 @@ import java.util.concurrent.ThreadFactory;
 /**
  * Netty Client Factory,to create client based on netty API
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyClientFactory extends AbstractClientFactory {
 

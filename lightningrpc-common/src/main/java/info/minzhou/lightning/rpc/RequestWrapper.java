@@ -2,15 +2,13 @@ package info.minzhou.lightning.rpc;
 /**
  * nfs-rpc
  *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
+ *
  */
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * RequestWrapper
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class RequestWrapper {
 	

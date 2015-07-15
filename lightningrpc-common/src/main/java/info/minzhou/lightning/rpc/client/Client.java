@@ -1,9 +1,4 @@
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 package info.minzhou.lightning.rpc.client;
 
 import java.util.List;
@@ -13,7 +8,6 @@ import info.minzhou.lightning.rpc.ResponseWrapper;
 /**
  * RPC Client Interface
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public interface Client {
 

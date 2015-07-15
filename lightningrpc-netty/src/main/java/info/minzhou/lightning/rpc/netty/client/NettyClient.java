@@ -1,11 +1,6 @@
 package info.minzhou.lightning.rpc.netty.client;
 
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.RequestWrapper;
 import info.minzhou.lightning.rpc.ResponseWrapper;
@@ -22,7 +17,6 @@ import java.net.InetSocketAddress;
 /**
  * Netty Client
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyClient extends AbstractClient {
 

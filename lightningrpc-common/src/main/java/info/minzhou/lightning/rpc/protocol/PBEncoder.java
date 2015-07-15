@@ -1,17 +1,11 @@
 package info.minzhou.lightning.rpc.protocol;
 
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import com.google.protobuf.Message;
 
 /**
  * ProtocolBuf Encoder
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class PBEncoder implements Encoder {
 

@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.client;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +10,6 @@ import java.util.concurrent.FutureTask;
 /**
  * Abstract Client Factory,create custom nums client
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public abstract class AbstractClientFactory implements ClientFactory {
 

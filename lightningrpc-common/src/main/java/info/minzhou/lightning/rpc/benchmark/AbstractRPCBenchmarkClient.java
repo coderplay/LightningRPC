@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.benchmark;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +14,6 @@ import info.minzhou.lightning.rpc.protocol.RPCProtocol;
 /**
  * Test for RPC based on reflection Benchmark
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public abstract class AbstractRPCBenchmarkClient extends AbstractBenchmarkClient{
 

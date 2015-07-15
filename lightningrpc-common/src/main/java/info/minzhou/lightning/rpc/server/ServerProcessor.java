@@ -1,14 +1,8 @@
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 package info.minzhou.lightning.rpc.server;
 /**
  * Direct RPC Call Server Processor Interface
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public interface ServerProcessor {
 

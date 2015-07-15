@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.netty.benchmark;
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.benchmark.AbstractRPCBenchmarkClient;
 import info.minzhou.lightning.rpc.benchmark.BenchmarkTestService;
@@ -18,7 +13,6 @@ import java.util.Map;
 /**
  * Netty RPC Benchmark Client
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyRPCBenchmarkClient extends AbstractRPCBenchmarkClient {
 

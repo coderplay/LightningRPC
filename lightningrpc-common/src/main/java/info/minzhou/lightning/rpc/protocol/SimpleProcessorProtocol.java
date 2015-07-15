@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.protocol;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import info.minzhou.lightning.rpc.Codecs;
 import info.minzhou.lightning.rpc.ResponseWrapper;
 import org.apache.commons.logging.Log;
@@ -30,7 +25,6 @@ import info.minzhou.lightning.rpc.RequestWrapper;
  *  BodyClassName: if need than set
  *  BODY
  *  
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class SimpleProcessorProtocol implements Protocol{
 	

@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.benchmark;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
@@ -28,7 +23,6 @@ import info.minzhou.lightning.rpc.protocol.PBDecoder;
  * Usage: -Dwrite.statistics=false BenchmarkClient serverIP serverPort
  * concurrents timeout codectype requestSize runtime(seconds) clientNums
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public abstract class AbstractBenchmarkClient {
 

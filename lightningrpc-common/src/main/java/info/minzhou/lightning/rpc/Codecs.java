@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import info.minzhou.lightning.rpc.protocol.Decoder;
 import info.minzhou.lightning.rpc.protocol.Encoder;
 import info.minzhou.lightning.rpc.protocol.JavaDecoder;
@@ -17,7 +12,6 @@ import info.minzhou.lightning.rpc.protocol.PBEncoder;
 /**
  * Encoder and Decoder Register
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class Codecs {
 	

@@ -1,17 +1,11 @@
 package info.minzhou.lightning.rpc.server;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import info.minzhou.lightning.rpc.RequestWrapper;
 import info.minzhou.lightning.rpc.ResponseWrapper;
 
 /**
  * Server Handler interface,when server receive message,it will handle 
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public interface ServerHandler {
 

@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.netty.client;
-/**
- * nfs-rpc
- *   Apache License
- *
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 
 import info.minzhou.lightning.rpc.ResponseWrapper;
 import io.netty.channel.ChannelHandlerContext;
@@ -18,7 +13,6 @@ import java.util.List;
 /**
  * Netty Client Handler
  *
- * @author <a href="mailto:coderplay@gmail.com">Min Zhou</a>
  */
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 

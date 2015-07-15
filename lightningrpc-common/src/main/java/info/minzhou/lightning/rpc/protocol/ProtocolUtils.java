@@ -1,9 +1,4 @@
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 package info.minzhou.lightning.rpc.protocol;
 
 import info.minzhou.lightning.rpc.ProtocolFactory;
@@ -16,7 +11,6 @@ import info.minzhou.lightning.rpc.ResponseWrapper;
  *  TYPE(1B):    Protocol Type,so u can custom your protocol
  *  CUSTOM PROTOCOL (such as RPCProtocol)
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public class ProtocolUtils {
 

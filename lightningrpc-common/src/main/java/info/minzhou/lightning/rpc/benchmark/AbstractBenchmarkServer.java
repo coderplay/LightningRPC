@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.benchmark;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
@@ -23,13 +18,11 @@ import info.minzhou.lightning.rpc.server.ServerProcessor;
 import com.esotericsoftware.kryo.serializers.DefaultArraySerializers;
 import com.google.protobuf.ByteString;
 
-
 /**
  * Abstract benchmark server
  * 
  * Usage: BenchmarkServer listenPort maxThreads responseSize
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public abstract class AbstractBenchmarkServer {
 

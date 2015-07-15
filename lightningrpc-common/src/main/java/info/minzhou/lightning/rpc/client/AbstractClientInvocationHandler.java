@@ -1,10 +1,5 @@
 package info.minzhou.lightning.rpc.client;
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
@@ -15,7 +10,6 @@ import java.util.Random;
 /**
  * Abstract Client Invocation Handler,help for client proxy 
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public abstract class AbstractClientInvocationHandler implements InvocationHandler {
 

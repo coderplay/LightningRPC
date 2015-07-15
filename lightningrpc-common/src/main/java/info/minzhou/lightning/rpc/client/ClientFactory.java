@@ -1,14 +1,8 @@
-/**
- * nfs-rpc
- *   Apache License
- *   
- *   http://code.google.com/p/nfs-rpc (c) 2011
- */
+
 package info.minzhou.lightning.rpc.client;
 /**
  * RPC ClientFactory Interface,help for get approviate nums client
  * 
- * @author <a href="mailto:bluedavy@gmail.com">bluedavy</a>
  */
 public interface ClientFactory {
 
