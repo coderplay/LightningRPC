@@ -15,6 +15,9 @@ public class ResponseObject implements Serializable {
 		bytes = new byte[size];
 	}
 
+  public ResponseObject(byte[] bytes){
+    this.bytes = bytes;
+  }
 	public byte[] getBytes() {
 		return bytes;
 	}

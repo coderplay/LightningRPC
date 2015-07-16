@@ -14,7 +14,7 @@ public class KryoEncoder implements Encoder {
 	 */
 	@Override
 	public byte[] encode(Object object) throws Exception {
-		Output output = new Output(256);
+		Output output = new Output(256, Integer.MAX_VALUE);
 		KryoUtils.getKryo().writeClassAndObject(output, object);
 		return output.toBytes();
 	}

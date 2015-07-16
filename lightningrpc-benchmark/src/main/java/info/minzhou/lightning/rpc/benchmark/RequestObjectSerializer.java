@@ -4,35 +4,23 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.Serializer;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.esotericsoftware.kryo.serializers.DefaultArraySerializers;
 
 /**
  * RequestObject Serializer
  * 
  */
 public class RequestObjectSerializer extends Serializer<RequestObject> {
-	/**
-	 * @param kryo
-	 * @param output
-	 * @param reqObject
-	 */
-	@Override
-	public void write(Kryo kryo, Output output, RequestObject reqObject) {
-		byte[] content = reqObject.getBytes();
-		output.write(content);
-	}
+  private DefaultArraySerializers.ByteArraySerializer delegate = new DefaultArraySerializers.ByteArraySerializer();
 
-	/**
-	 * @param kryo
-	 * @param input
-	 * @param type
-	 * @return
-	 */
-	public RequestObject create(Kryo kryo, Input input, Class<RequestObject> type) {
-		return new RequestObject(input.getBuffer().length - 1);
-	}
+  @Override
+  public void write(Kryo kryo, Output output, RequestObject reqObject) {
+    delegate.write(kryo, output, reqObject.getBytes());
+  }
 
   @Override
   public RequestObject read(Kryo kryo, Input input, Class<RequestObject> type) {
-    return kryo.readObjectOrNull(input, type);
+    byte[] bytes = delegate.read(kryo, input, byte[].class);
+    return new RequestObject(bytes);
   }
 }
