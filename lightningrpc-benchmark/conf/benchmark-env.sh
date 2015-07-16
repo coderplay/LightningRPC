@@ -28,25 +28,19 @@
 # export BENCHMARK_CLASSPATH=/xxx/extlib/*:/xxx/xxx.jar
 
 # The maximum amount of heap to use, in MB. Default is 1000.
-# export BENCHMARK_SERVER_HEAPSIZE=1000
+export BENCHMARK_SERVER_HEAPSIZE=20480
 
 # The maximum amount of heap to use, in MB. Default is 1000.
-# export BENCHMARK_CLIENT_HEAPSIZE=1000
+export BENCHMARK_CLIENT_HEAPSIZE=20480
 
 # Extra Java runtime options.  Empty by default.
 # export BENCHMARK_OPTS=-server
 
 # Extra BenchmarkMaster's java runtime options for BenchmarkMaster. Empty by default
-# export BENCHMARK_SERVER_OPTS=
+export BENCHMARK_SERVER_OPTS=' -XX:+UseConcMarkSweepGC  -XX:+PreserveFramePointer '
 
 # Extra BenchmarkWorker's java runtime options. Empty by default
-# export BENCHMARK_CLIENT_OPTS=
-
-# Extra BenchmarkPullServer's java runtime options. Empty by default
-# export BENCHMARK_PULLSERVER_OPTS=
-
-# Extra  QueryMaster mode BenchmarkWorker's java runtime options for BenchmarkMaster. Empty by default
-# export BENCHMARK_QUERYSERVER_OPTS=
+export BENCHMARK_CLIENT_OPTS=' -XX:+UseConcMarkSweepGC  -XX:+PreserveFramePointer '
 
 # Where log files are stored.  $BENCHMARK_HOME/logs by default.
 # export BENCHMARK_LOG_DIR=${BENCHMARK_HOME}/logs
@@ -59,13 +53,3 @@
 
 # The scheduling priority for daemon processes.  See 'man nice'.
 # export BENCHMARK_NICENESS=10
-
-# It must be required to use HiveCatalogStore
-# export HIVE_HOME=
-# export HIVE_JDBC_DRIVER_DIR=
-
-# Benchmark PullServer mode. the default is embedded mode (in worker)
-# export BENCHMARK_PULLSERVER_STANDALONE=false
-
-# HBase home directory. It is opitional, but is required mandatorily to use HBase.
-# export HBASE_HOME=
