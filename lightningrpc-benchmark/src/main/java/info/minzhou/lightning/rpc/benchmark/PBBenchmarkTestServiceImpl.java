@@ -15,7 +15,7 @@ public class PBBenchmarkTestServiceImpl implements BenchmarkTestService {
 		this.responseSize = responseSize;
 	}
 	
-	// support java/hessian/pb codec
+	// support java/pb codec
 	public Object execute(Object request) {
 		throw new UnsupportedOperationException("unsupported");
 	}
