@@ -58,7 +58,7 @@ function print_usage() {
   echo "where COMMAND is one of:"
   echo "  server            run the benchmark server"
   echo "  client            run the benchmark rpc client"
-  echo "  simple-client            run the benchmark simple client"
+  echo "  simple-client     run the benchmark simple client"
   echo "  classpath         prints the class path needed to get the"
   echo "                    Benchmark jar and the required libraries"
   echo " or"
@@ -190,13 +190,13 @@ if [ "$COMMAND" = "classpath" ] ; then
   echo $CLASSPATH
   exit
 elif [ "$COMMAND" = "server" ] ; then
-  CLASS='info.minzhou.lightning.rpc.netty.benchmark.NettyBenchmarkServer"
+  CLASS='info.minzhou.lightning.rpc.benchmark.netty.NettyBenchmarkServer'
   BENCHMARK_OPTS="$BENCHMARK_OPTS $JAVA_BENCHMARK_SERVER_HEAP_MAX $BENCHMARK_SERVER_OPTS"
 elif [ "$COMMAND" = "client" ] ; then
-  CLASS="info.minzhou.lightning.rpc.netty.benchmark.NettyRPCBenchmarkClient"
+  CLASS='info.minzhou.lightning.rpc.benchmark.netty.NettyRPCBenchmarkClient'
   BENCHMARK_OPTS="$BENCHMARK_OPTS $JAVA_CLIENT_HEAP_MAX $BENCHMARK_CLIENT_OPTS"
 elif [ "$COMMAND" = "simple-client" ] ; then
-  CLASS="info.minzhou.lightning.rpc.netty.benchmark.NettySimpleBenchmarkClient"
+  CLASS='info.minzhou.lightning.rpc.benchmark.netty.NettySimpleBenchmarkClient'
   BENCHMARK_OPTS="$BENCHMARK_OPTS $JAVA_CLIENT_HEAP_MAX $BENCHMARK_CLIENT_OPTS"
 elif [ "$COMMAND" = "version" ] ; then
   CLASS='info.minzhou.lightning.rpc.VersionInfo'
