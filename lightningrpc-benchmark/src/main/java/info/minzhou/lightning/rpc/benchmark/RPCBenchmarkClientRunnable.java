@@ -87,12 +87,12 @@ public class RPCBenchmarkClientRunnable implements ClientRunnable {
 			runPB();
 		}
 		else{
-			runJavaAndHessian();
+			runJava();
 		}
 		latch.countDown();
 	}
 	
-	private void runJavaAndHessian(){
+	private void runJava(){
 		while (running) {
 			Object requestObject = new RequestObject(requestSize);
 			long beginTime = System.currentTimeMillis();
